@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computer Graphics Canvas Demo (Primitives + Transforms)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="page">
+      <h1>HTML5 Canvas: Intro Computer Graphics Concepts</h1>
+      <p class="subtitle">
+        Primitives → Composition → Transformations (translate/rotate/scale) → Animation (requestAnimationFrame)
+      </p>
+    </header>
+
+    <main class="page">
+      <section class="panel">
+        <div class="controls">
+          <button id="toggleBtn" type="button">Pause animation</button>
+
+          <label class="control">
+            Car speed
+            <input id="speed" type="range" min="10" max="220" value="90" />
+          </label>
+
+          <label class="control">
+            Person "breathing" amount
+            <input id="breath" type="range" min="0" max="30" value="10" />
+          </label>
+
+          <div class="hint">
+            Hover over the canvas to “highlight” an object (scales slightly) to reinforce transforms.
+          </div>
+        </div>
+
+        <div class="canvasWrap">
+          <canvas id="canvas" width="960" height="520" aria-label="Computer graphics canvas demo"></canvas>
+        </div>
+
+        <div class="legend">
+          <div><span class="swatch house"></span> House: primitives + composition</div>
+          <div><span class="swatch car"></span> Car: translation + wheel rotation</div>
+          <div><span class="swatch person"></span> Person: scaling + slight translation (“breathing”)</div>
+        </div>
+      </section>
+
+      <section class="text">
+        <h2>What you’re seeing</h2>
+
+        <h3>1) Geometric primitives</h3>
+        <ul>
+          <li><strong>Rectangles</strong> (house body, doors, car body, windows, torso)</li>
+          <li><strong>Triangles</strong> (roof)</li>
+          <li><strong>Circles</strong> (wheels, head)</li>
+          <li><strong>Lines</strong> (arms/legs)</li>
+        </ul>
+
+        <h3>2) Object composition</h3>
+        <p>
+          Each object (house/car/person) is built from smaller shapes in its own
+          <code>drawHouse</code>, <code>drawCar</code>, and <code>drawPerson</code> function.
+        </p>
+
+        <h3>3) Transformations</h3>
+        <ul>
+          <li><strong>Translation</strong>: the car moves across the canvas using <code>ctx.translate()</code>.</li>
+          <li><strong>Rotation</strong>: wheels rotate using <code>ctx.rotate()</code>.</li>
+          <li><strong>Scaling</strong>: the person scales subtly with <code>ctx.scale()</code>.</li>
+        </ul>
+
+        <h3>4) Animation loop</h3>
+        <p>
+          A standard <code>requestAnimationFrame()</code> loop updates positions/angles then redraws the whole scene.
+        </p>
+      </section>
+    </main>
+
+    <footer class="page footer">
+      <small>Runs locally: open <code>index.html</code>. No build step.</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
